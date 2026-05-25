@@ -62,7 +62,8 @@ jobs:
           git tag ${{ steps.version.outputs.new_tag }}   
           git push --tags     
       - name: Commit & push version
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: ncipollo/release-action@v1
         with:
-          commit_message: "chore: release ${{ steps.version.outputs.new_tag }}"
-          branch: main
+          tag: ${{ steps.version.outputs.new_tag }}
+          name: Release ${{ steps.version.outputs.new_tag }}
+          body: ${{ steps.version.outputs.changelog }}
