@@ -32,7 +32,7 @@
  */
 
 /** @phpstan-ignore theCodingMachineSafe.function (safe to assume this isn't already defined) */
-define('PLUGIN_WORKHOURS_VERSION', 'v0.0.4');
+define('PLUGIN_WORKHOURS_VERSION', '0.0.5');
 
 // Minimal GLPI version, inclusive
 /** @phpstan-ignore theCodingMachineSafe.function (safe to assume this isn't already defined) */
