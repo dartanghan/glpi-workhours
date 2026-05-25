@@ -45,7 +45,7 @@ jobs:
           else
             PATCH=$((PATCH + 1))
           fi
-          NEW_TAG="v$MAJOR.$MINOR.$PATCH"
+          NEW_TAG="$MAJOR.$MINOR.$PATCH"
 
           echo "New tag: $NEW_TAG"
           echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
@@ -57,6 +57,6 @@ jobs:
           git push
       - name: Create and Push Tag
         run: |
-          git tag ${{ steps.version.outputs.new_tag }}        
+          git tag v${{ steps.version.outputs.new_tag }}        
           git push --tags  
           
