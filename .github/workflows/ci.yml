@@ -60,7 +60,6 @@ jobs:
       - name: Create and Push Tag
         run: |
           git tag ${{ steps.version.outputs.new_tag }}   
-          git push --tags     
       - name: Commit & push version
         uses: ncipollo/release-action@v1
         with:
