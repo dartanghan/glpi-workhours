@@ -51,7 +51,7 @@ jobs:
           echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
       - name: Update Setup
         run: |
-          sed -i "s/BOUWEN_VERSION/${{ steps.version.outputs.new_tag }}/g" setup.php
+          sed -i "s/define('PLUGIN_WORKHOURS_VERSION', .*)/define('PLUGIN_WORKHOURS_VERSION', '${{ steps.version.outputs.new_tag }}')/" setup.php
           git add setup.php
           git commit -m "Update version to $NEW_TAG"
           git push
