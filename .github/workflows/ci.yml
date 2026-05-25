@@ -59,5 +59,9 @@ jobs:
 
       - name: Create and Push Tag
         run: |
-          git tag ${{ steps.version.outputs.new_tag }}
-          git push origin ${{ steps.version.outputs.new_tag }}
+          git tag ${{ steps.version.outputs.new_tag }}        
+      - name: Commit & push version
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore: release ${{ steps.version.outputs.new_tag }}"
+          branch: main
