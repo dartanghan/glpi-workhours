@@ -47,12 +47,14 @@ jobs:
           fi
           NEW_TAG="v$MAJOR.$MINOR.$PATCH"
 
-          sed -i "s/BOUWEN_VERSION/$NEW_TAG/g" setup.php
-          git add setup.php
-          git commit -m "Update version to $NEW_TAG"
           echo "New tag: $NEW_TAG"
           echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
-
+      - name: Update Setup
+        run: |
+          sed -i "s/BOUWEN_VERSION/${{ steps.version.outputs.new_tag }}/g" setup.php
+          git add setup.php
+          git commit -m "Update version to $NEW_TAG"
+          git push
       - name: Create and Push Tag
         run: |
           git tag ${{ steps.version.outputs.new_tag }}        
