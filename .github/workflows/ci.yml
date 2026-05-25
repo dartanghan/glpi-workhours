@@ -59,7 +59,8 @@ jobs:
 
       - name: Create and Push Tag
         run: |
-          git tag ${{ steps.version.outputs.new_tag }}        
+          git tag ${{ steps.version.outputs.new_tag }}   
+          git push --tags     
       - name: Commit & push version
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
