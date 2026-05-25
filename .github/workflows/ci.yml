@@ -2,6 +2,8 @@ on:
     push:
         branches: [main]
 
+permissions:
+  contents: write
 
 jobs:
   tag:
@@ -59,10 +61,6 @@ jobs:
 
       - name: Create and Push Tag
         run: |
-          git tag ${{ steps.version.outputs.new_tag }}   
-      - name: Commit + push version
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.version.outputs.new_tag }}
-          name: Release ${{ steps.version.outputs.new_tag }}
-          body: ${{ steps.version.outputs.changelog }}
+          git tag ${{ steps.version.outputs.new_tag }}
+          git push --tags  
+          
